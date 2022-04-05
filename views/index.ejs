@@ -60,8 +60,8 @@
                 <nav class="">
                     <ul class="navbar1-nav">
 
-                        <li> <a href="index.ejs" class="navbar1-link">Home</a> </li>
-                        <li> <a href="movies.html" class="navbar1-link">Movies</a> </li>
+                        <li> <a href="http://localhost:3000/" class="navbar1-link">Home</a> </li>
+                        <li> <a href="http://localhost:3000/movies/general" class="navbar1-link">Movies</a> </li>
                         <li> <a href="#live" class="navbar1-link  ">TV Show</a> </li>
                         <li> <a href="movies.html" class="navbar1-link">My List</a> </li>
                     </ul>
@@ -148,7 +148,9 @@
                                                 <span><%=e.Runtime %></span>
                                             </div>
 
-                                            <div class="quality">4K</div>
+                                            <div class="quality">
+                                                <%=e.IMDB_Rating %>
+                                            </div>
 
                                         </div>
 
@@ -193,6 +195,7 @@
                         <%   result2.forEach(function(e){%>
                             <div class="movie-list-item">
                                 <img class="movie-list-item-img" src=<%=e.Poster_Link %> alt=" ">
+
                                 <span class="movie-list-item-title "> <%= e.Series_Title  %></span>
                                 <p class="movie-list-item-desc ">
                                     <%= e.Overview  %>
@@ -221,13 +224,13 @@
                 <h2 class="section-heading ">Category</h2>
 
                 <div class="category-grid ">
-
-                    <div class="category-card ">
-                        <img src="./images/action.jpg " alt=" " class="card-img ">
-                        <div class="name ">Action</div>
-                        <div class="total ">100</div>
-                    </div>
-
+                    <a href="/category/action">
+                        <div class="category-card ">
+                            <img src="./images/action.jpg " alt=" " class="card-img ">
+                            <div class="name ">Action</div>
+                            <div class="total ">100</div>
+                        </div>
+                    </a>
                     <div class="category-card ">
                         <img src="./images/comedy.jpg " alt=" " class="card-img ">
                         <div class="name ">Comedy</div>

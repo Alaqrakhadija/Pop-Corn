@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const app = express();
 const query = require('./config/database');
+const { YEAR } = require('mysql/lib/protocol/constants/types');
 
 
 
@@ -46,44 +47,87 @@ app.get('/', async(req, res) => {
 
 })
 
+app.get('/movies/', async(req, res) => {
 
-
-app.get('/query', (req, res) => {
-    const parameters = req.query;
-
-    const keyArray = Object.keys(parameters);
-    let sqlQueryString = 'select * from imdb_top_1000 where ';
-    console.log(parameters[keyArray[0]]);
-    for (i = 0; i < keyArray.length; i++) {
-
-        const name = keyArray[i];
-        // if (i === keyArray.length - 1) {
-        //     sqlQueryString += `${name}=${parameters[name]}`
-
-
-        // }
-        sqlQueryString += `${name}='${parameters[name]}' `
-
-    }
-    console.log(sqlQueryString);
-    pool.getConnection((err, connection) => {
-
-
-        if (err) return;
-        connection.query(sqlQueryString, (err, result) => {
-            console.log(result);
-        })
-
-    })
-
-    console.log(keyArray);
+    const qyery1 = "SELECT Poster_Link,Series_Title,Released_Year,Genre,IMDB_Rating FROM `imdb_top_1000` LIMIT 18";
 
 
 
+
+    const result = await query(qyery1);
+
+
+    console.log(result)
+    res.render("movies", { result });
 
 
 
 })
+app.get('/movies/:catg', async(req, res) => {
+
+    const genre = req.params.catg;
+    const qyery1 = 'SELECT * FROM imdb_top_1000  WHERE Genre LIKE "%' + `${genre}` + '%"';
+
+
+
+
+    const result = await query(qyery1);
+
+
+    console.log(result)
+    res.render("movies", { result });
+
+
+
+})
+
+
+
+
+app.get('/filter', async(req, res) => {
+            let sqlQueryString;
+            const genre = req.query.Genre;
+            const year = req.query.Released_Year ? req.query.Released_Year.split("-") : '';
+            const filters = {
+                    genre: `${genre? genre==="all genres"?"":'Genre LIKE "%'+`${genre}`+'%"':""}`,
+                    year:`${year?year[0]==="allyears"?"":'Released_Year BETWEEN '+`${year[0]}`+' and '+`${year[1]}`:""}`
+}
+console.log(filters.genre+"   "+filters.year);
+ if(filters.genre && filters.year){
+    sqlQueryString = 'SELECT Poster_Link,Series_Title,Released_Year,Genre,IMDB_Rating from `imdb_top_1000` where '+`${filters.genre}`+' and '+`${filters.year}`;
+}
+else if(filters.genre.length==0 && filters.year.length==0){
+    sqlQueryString = 'SELECT Poster_Link,Series_Title,Released_Year,Genre,IMDB_Rating from `imdb_top_1000`';
+   
+}
+else{
+    
+    sqlQueryString = 'SELECT Poster_Link,Series_Title,Released_Year,Genre,IMDB_Rating from `imdb_top_1000` where '+`${filters.genre}`+`${filters.year}`;
+
+}
+
+sqlQueryString +=' LIMIT 18';
+  
+   const result = await query(sqlQueryString);
+  res.json({ msg: result });
+    console.log(sqlQueryString);
+    console.log(result);
+
+});
+
+
+
+
+app.get('/category/:catg', async(req, res) => {
+
+    const qyery1 = "SELECT Poster_Link,Series_Title,Released_Year,Genre,IMDB_Rating FROM `imdb_top_1000` where"+`${req.params.catg}`+" LIMIT 18";
+    const result = await query(qyery1);
+
+    console.log(result)
+    res.render("movies", { result});
+})
+
+
 
 
 app.get('/search', async(req, res) => {
@@ -91,6 +135,7 @@ app.get('/search', async(req, res) => {
     const search = req.query.q;
 
     res.json({ msg: "your search is :" + search });
+
 
 })
 
