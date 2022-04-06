@@ -40,6 +40,7 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/movies", async (req, res) => {
+  //routing for genres
   const genre = req.query.genre;
   if (genre) {
     const qyery1 =
@@ -49,6 +50,7 @@ app.get("/movies", async (req, res) => {
 
     res.render("movies", { result, genre: genre });
   } else {
+    // if no genre is selected
     const qyery1 =
       "SELECT Poster_Link,Series_Title,Released_Year,Genre,IMDB_Rating FROM `imdb_top_1000` LIMIT 18";
 
@@ -56,15 +58,6 @@ app.get("/movies", async (req, res) => {
 
     res.render("movies", { result, genre: "allgenres" });
   }
-});
-app.get("/movies/:catg", async (req, res) => {
-  const genre = req.params.catg;
-  const qyery1 =
-    'SELECT * FROM imdb_top_1000  WHERE Genre LIKE "%' + `${genre}` + '%"';
-
-  const result = await query(qyery1);
-
-  res.render("movies", { result });
 });
 
 app.get("/filter", async (req, res) => {
@@ -112,23 +105,6 @@ app.get("/filter", async (req, res) => {
   res.json({ msg: result });
   console.log(sqlQueryString);
   console.log(result);
-});
-
-app.get("/category/:catg", async (req, res) => {
-  const qyery1 =
-    "SELECT Poster_Link,Series_Title,Released_Year,Genre,IMDB_Rating FROM `imdb_top_1000` where" +
-    `${req.params.catg}` +
-    " LIMIT 18";
-  const result = await query(qyery1);
-
-  console.log(result);
-  res.render("movies", { result });
-});
-
-app.get("/search", async (req, res) => {
-  const search = req.query.q;
-
-  res.json({ msg: "your search is :" + search });
 });
 
 app.listen(3000, () => {
