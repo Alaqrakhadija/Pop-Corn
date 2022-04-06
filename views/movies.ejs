@@ -6,13 +6,13 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./images/icon.png" type="image/png">
+    <link rel="shortcut icon" href="/images/icon.png" type="image/png">
     <title>Popcorn</title>
     <!--
        - custom css link
      -->
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/media_query.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/media_query.css">
 
 
     <!--
@@ -39,8 +39,8 @@
                 <!--the button to show the menu , three dashes
 -->
 
-                <a href="#" class="navbar1-brand">
-                    <img src="./images/logo.png" alt="">
+                <a href="/" class="navbar1-brand">
+                    <img src="/images/logo.png" alt="">
                 </a>
 
                 <!--
@@ -50,8 +50,8 @@
                 <nav class="">
                     <ul class="navbar1-nav">
 
-                        <li> <a href="http://localhost:3000/" class="navbar1-link">Home</a> </li>
-                        <li> <a href="http://localhost:3000/movies/general" class="navbar1-link">Movies</a> </li>
+                        <li> <a href="/" class="navbar1-link">Home</a> </li>
+                        <li> <a href="/movies" class="navbar1-link">Movies</a> </li>
                         <li> <a href="#live" class="navbar1-link  ">TV Show</a> </li>
                         <li> <a href="movies.html" class="navbar1-link">My List</a> </li>
                     </ul>
@@ -86,7 +86,7 @@
 
                     <a href="#" class="navbar1-signin">
                         <figure>
-                            <img src="./images/popcorn.png" style="width: 50px;height:50px">
+                            <img src="/images/popcorn.png" style="width: 50px;height:50px">
                             <figcaption style="font-size: 10px; padding-left:3px; ">My Profile</figcaption>
                         </figure>
 
@@ -110,16 +110,18 @@
             <div class="filter-bar">
 
                 <div class="filter-dropdowns">
-
-                    <select name="genre" class="genre">
-                <option value="all genres">All genres</option>
-                <option value="Action">Action</option>
-                <option value="Adventure">Adventure</option>
-                <option value="Animal">Animal</option>
-                <option value="Crime">Crime</option>
-                <option value="Drama">Drama</option>
-                <option value="Animation">Animation</option>
-                <option value="Biography">Biography</option>
+ 
+                    <select name="genre" class="genre" value=<%=genre%>  >
+                        <% var arr=["All genres","Action","Adventure","Animal","Crime","Drama","Animation","Biography","Thriller","Comedy","Horror"] %>
+                        <%  arr.forEach(function(e){%>
+                        <% if(e===genre){ %>
+                        
+                            <option selected value=<%= e %>><%= e %></option>
+                        <%}else{%>
+                            <option  value=<%= e %>><%= e %></option>
+                        
+                        <% } %>
+                        <%})%>  
             </select>
 
                     <select name="year" class="year">
@@ -270,7 +272,7 @@
     </datalist>
         <button onclick="test();" class="ser">search</button>
     </div>
-    <script src="./js/movie.js"></script>
+    <script src="/js/movie.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
