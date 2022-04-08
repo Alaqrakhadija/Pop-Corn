@@ -1,36 +1,39 @@
 const Home = require("../views/Home");
 const Movies = require("../views/Movies");
 const Search = require("../views/Search");
-const _ = require("lodash");
+const MovieView = require("../views/MoviesView");
+const urlPattern = require("url-pattern");
+
+const CreatePattern = (path) => new urlPattern(path);
 
 const router = async () => {
   const routes = [
     {
       path: "/",
       view: Home,
-      title: "Home",
     },
     {
       path: "/movies",
       view: Movies,
-      title: "Movies",
     },
-    { path: "/search", view: Search, title: "" },
-    { path: "/series", view: "series", title: "Series" },
+    { path: "/search", view: Search },
+    { path: "/movies(/:title)", view: MovieView },
   ];
 
   const potientailRoutes = routes.map((route) => {
     return {
       route: route,
-      isMatched: route.path === location.pathname,
+      params: CreatePattern(route.path).match(location.pathname),
     };
   });
 
-  let match = potientailRoutes.find((e) => e.isMatched);
-  if (!match) match = { route: routes[0], isMatched: true };
+  let match = potientailRoutes.find((e) => e.params !== null);
+  if (!match) match = { route: routes[0], params: location.pathname };
+  console.log(match);
 
-  const view = new match.route.view(match.route.title);
+  const view = new match.route.view(match.params);
   const html = await view.getHtml(window.location.href);
+  console.log(html);
 
   document.getElementById("root").innerHTML = html;
 };
@@ -55,17 +58,6 @@ $(".navbar1-link").click(async (e) => {
   history.pushState(null, null, url);
   router();
 });
-
-const header = document.querySelector("header");
-const nav = document.querySelector("nav");
-const navbarMenuBtn = document.querySelector(".navbar1-menu-btn");
-
-// variables for navbar search toggle
-const navbarForm = document.querySelector(".navbar1-form");
-const navbarFormCloseBtn = document.querySelector(".navbar1-form-close");
-const navbarSearchBtn = document.querySelector(".navbar1-search-btn");
-
-//variable for you might like:
 
 /// hanfling filters
 const filters = {
@@ -114,15 +106,25 @@ $("#search-input").on("propertychange input", function (e) {
   } else navigateTo(`/search?q=${value}`);
 });
 
-function navIsActive() {
-  header.classList.toggle("active");
-  nav.classList.toggle("active");
-  navbarMenuBtn.classList.toggle("active");
-}
+const targetNode = document.getElementById("root");
 
-navbarMenuBtn.addEventListener("click", navIsActive);
+const config = { attributes: true, childList: true, subtree: true };
 
-// navbar search toggle function
+// Callback function to execute when mutations are observed
+const callback = function (mutationsList, observer) {
+  // Use traditional 'for loops' for IE 11
+  for (const mutation of mutationsList) {
+    if (mutation.type === "childList") {
+      $(".movie-card").click((e) => {
+        console.log("you clicked a card");
+        navigateTo(`/movies/${e.currentTarget.title}`);
+      });
+    }
+  }
+};
 
-navbarSearchBtn.addEventListener("click", searchBarIsActive);
-navbarFormCloseBtn.addEventListener("click", searchBarIsActive);
+// Create an observer instance linked to the callback function
+const observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);

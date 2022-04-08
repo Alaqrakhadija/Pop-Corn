@@ -1,9 +1,9 @@
 const Abstarct = require("./Abstarct");
 
 class Search extends Abstarct {
-  constructor(title) {
-    super();
-    this.setTitle(title);
+  constructor(params) {
+    super(params);
+    this.setTitle("Movies");
   }
 
   async getHtml(url) {
@@ -42,7 +42,7 @@ ${moviesHtml}
 
       data.forEach((e) => {
         moviesHtml += `  
-        <div class="movie-card">
+        <div title="${e.Series_Title}" class="movie-card">
             <div class="card-head">
                 <img src=${e.Poster_Link} alt="" class="card-img">
                 <div class="card-overlay">

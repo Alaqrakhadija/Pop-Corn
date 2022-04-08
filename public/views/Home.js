@@ -1,9 +1,9 @@
 const Abstarct = require("./Abstarct");
 
 class Home extends Abstarct {
-  constructor(title) {
+  constructor() {
     super();
-    this.setTitle(title);
+    this.setTitle("Home");
     $(".filter-bar").hide();
   }
 

@@ -3,8 +3,10 @@ const {
   getHomeData,
   getMoviesData,
   getSearchData,
+  getMovieByTitle,
 } = require("../services/service");
 const _ = require("lodash");
+const app = require("../app");
 
 const router = express.Router();
 
@@ -34,6 +36,19 @@ router.get("/search", async (req, res, next) => {
   try {
     const data = await getSearchData(q);
 
+    res.status(200).json(data);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.get("/movies/:title", async (req, res, next) => {
+  const title = req.params.title;
+  console.log(title);
+
+  try {
+    const data = await getMovieByTitle(title);
+    console.log(data);
     res.status(200).json(data);
   } catch (e) {
     next(e);

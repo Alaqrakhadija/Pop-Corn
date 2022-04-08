@@ -61,5 +61,17 @@ const getSearchData = async (searchQuery) => {
 
   return data;
 };
+const getMovieByTitle = async (title) => {
+  try {
+    const data = await query(
+      'SELECT * FROM `imdb_top_1000` WHERE Series_Title LIKE "%' +
+        `${title}` +
+        '%"'
+    );
+    return data;
+  } catch (e) {
+    console.log(e);
+  }
+};
 
-module.exports = { getHomeData, getMoviesData, getSearchData };
+module.exports = { getHomeData, getMoviesData, getSearchData, getMovieByTitle };
