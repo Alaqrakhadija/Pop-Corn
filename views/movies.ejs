@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/icon.png" type="image/png">
+    <title>Popcorn</title>
+    <!--
+       - custom css link
+     -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/media_query.css">
+
+
+    <!--
+      - google font link
+    -->
+    <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="container1" id="blur">
+        <header class="">
+            <div class="navbar1">
+
+                <!--
+              - menu button for small screen
+            -->
+                <button class="navbar1-menu-btn">
+                <span class="one"></span>
+                <span class="two"></span>
+                <span class="three"></span>
+            </button>
+                <!--the button to show the menu , three dashes
+-->
+
+                <a href="/" class="navbar1-brand">
+                    <img src="/images/logo.png" alt="">
+                </a>
+
+                <!--
+              - navbar navigation
+            -->
+
+                <nav class="">
+                    <ul class="navbar1-nav">
+
+                        <li> <a href="/" class="navbar1-link">Home</a> </li>
+                        <li> <a href="/movies" class="navbar1-link">Movies</a> </li>
+                        <!-- <li> <a href="/series" class="navbar1-link  ">TV Show</a> </li> -->
+                        <li> <a href="movies.html" class="navbar1-link">My List</a> </li>
+                    </ul>
+                </nav>
+
+                <!--
+              - search and sign-in
+            -->
+
+                <div class="navbar1-actions">
+
+                    <form action="#" class="navbar1-form">
+                        <input id="search-input" type="text" name="search" placeholder="I'm looking for..." class="navbar1-form-search">
+
+                        <button class="navbar1-form-btn" id="button">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+
+                        <button class="navbar1-form-close">
+                        <ion-icon name="close-circle-outline"></ion-icon>
+                    </button>
+                    </form>
+
+
+                    <!--
+                  - search button for small screen
+                -->
+
+                    <button class="navbar1-search-btn">
+                    <ion-icon name="search-outline"></ion-icon>
+                </button>
+
+                    <a href="#" class="navbar1-signin">
+                        <figure>
+                            <img src="/images/popcorn.png" style="width: 50px;height:50px">
+                            <figcaption style="font-size: 10px; padding-left:3px; ">My Profile</figcaption>
+                        </figure>
+
+                    </a>
+
+                </div>
+
+            </div>
+        </header>
+
+
+
+        <!--
+        - #MOVIES SECTION
+      -->
+        <section class="movies">
+
+            <!--
+      - filter bar
+    -->
+            <div class="filter-bar" id="filter">
+
+                <div class="filter-dropdowns">
+
+                    <select name="genre" class="genre" value=<%=genre%>  >
+                        <% var arr=["All genres","Action","Adventure","Animal","Crime","Drama","Animation","Biography","Thriller","Comedy","Horror"] %>
+                        <%  arr.forEach(function(e){%>
+                        <% if(e===genre){ %>
+                        
+                            <option selected value="<%= e %>"><%= e %></option>
+                        <%}else{%>
+                            <option  value="<%= e %>"><%= e %></option>
+                        
+                        <% } %>
+                        <%})%>  
+            </select>
+
+                    <select name="year" class="year">
+                <option value="allyears">All the years</option>
+                <option value="2020-2021">2020-2022</option>
+                <option value="2010-2019">2010-2019</option>
+                <option value="2000-2009">2000-2009</option>
+                <option value="1980-1999">1980-1999</option>
+            </select>
+
+                </div>
+
+                <div class="filter-radios">
+
+                    <input type="radio" onclick="toggle()" name="grade" id="Mood" checked>
+                    <label for="Mood">Mood Search</label>
+
+
+
+
+                    <div class="checked-radio-bg small"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!--
+      - movies grid
+    -->
+
+            <div class="movies-grid">
+
+
+
+
+                <%  var i=0;
+                         while(i!=result.length){ %>
+
+                    <div class="movie-card">
+                        <div class="card-head">
+                            <img class="card-img" src="<%=result[i].img_url %>" lt="">
+                            <div class="card-overlay">
+                                <button class="bookmark" onclick="addtolist(this)" id="bookmark" value="<%= result[i].title  %>,<%=inmylist[i].isinlist %>">
+                                   
+                                    <%   
+                                  
+                if(inmylist[i].isinlist==='yes'){
+                    %>
+                    <ion-icon name="bookmark"></ion-icon>
+                                    <%   
+                } else{
+                    %>
+                    <ion-icon name="bookmark-outline"></ion-icon>
+                    <%   
+                } 
+                    %>
+                                </button>
+                                <div class="rating">
+                                    <ion-icon name="star-outline"></ion-icon>
+                                    <span><%=result[i].users_rating %></span>
+                                </div>
+                                <div class="play">
+                                    <ion-icon name="play-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <%= result[i].title  %>
+                            </h3>
+                            <div class="card-info">
+                                <span class="genre"><%=result[i].genre %></span>
+                                <span class="year"><%=result[i].year %></span>
+                            </div>
+                        </div>
+                    </div>
+                    <% i++; } %>
+
+
+
+            </div>
+
+            <!--
+      - load more button
+    -->
+            <!-- <button class="load-more" id="load">LOAD MORE</button>
+
+        </section> -->
+
+            <!--
+    - FOOTER SECTION
+  -->
+            <footer>
+
+                <div class="footer-content">
+
+
+
+
+
+                </div>
+
+
+                <div class="footer-copyright">
+
+                    <div class="social-link ">
+
+                        <a href="# ">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                        <a href="# ">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="# ">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                        <a href="# ">
+                            <ion-icon name="logo-youtube"></ion-icon>
+                        </a>
+                        <a href="# ">
+                            <ion-icon name="mail"></ion-icon>
+                        </a>
+
+                    </div>
+                    <div class="copyright">
+                        <p>&copy; copyright 2022 Popcorn</p>
+                    </div>
+
+
+
+                    <!--     <div class="wrapper">
+                   <a href="#">Privacy policy</a>
+                   <a href="#">Terms and conditions</a>
+                 </div>-->
+
+                </div>
+
+            </footer>
+    </div>
+
+    <!--    your Mode section-->
+
+
+
+    <div id="popup" class="your_mood" id="ll">
+        <div onclick="toggle()" class="close">+</div>
+        <div class="your_mood_text">Your Mood Decide Your Movie </div>
+        <input id="search-input" list="search_mood" name="search" class="navbar1-form-search">
+        <datalist id="search_mood">
+        <option value="sad">
+        <option value="happy">
+        <option value="excited">
+        <option value="furious">
+    </datalist>
+        <button onclick="test();" class="ser">search</button>
+    </div>
+
+
+    <%   if(search){ %>
+        <script>
+            document.getElementById('filter').style.display = "none";
+        </script>
+        <%  } %>
+
+
+            <%   if(!search){ %>
+                <script>
+                    document.getElementById('filter').style.display = 'flex';
+                    // document.getElementById('load').style.display = "block";
+                </script>
+                <%  } %>
+
+                    <!-- <% if(result.length>=18){%>
+                        <script>
+                            document.getElementById('load').style.display = "block";
+                        </script>
+
+                        <% }
+                    else{%>
+                            <script>
+                                console.log("h2");
+                                document.getElementById('load').style.display = "none";
+                            </script>
+                            <% }%> -->
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+                    <script src="/js/movie.js"></script>
+                    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

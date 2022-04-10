@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/icon.png" type="image/png">
+    <title>Popcorn</title>
+    <!--
+    - custom css link
+  -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/media_query.css">
+
+
+    <!--
+    - google font link
+  -->
+    <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+</head>
+
+<body>
+    <img src="https://images.theposterdb.com/prod/public/images/posters/optimized/shows/1370422/season_c/gWScMNCuSYM2wIjemAZj63KqJHK3ZegBu7Cxi25U.webp" class="banner-img" alt="">
+
+    <input id="search-input" type="text" name="search" placeholder="I'm looking for...">
+
+    <button id="but" value="here">
+        clik here
+    </button>
+
+
+    <script>
+        const search = document.getElementById("but");
+        const title = document.getElementById("search-input");
+
+
+
+        // currentStyle for IE, getComputedStyle for standards-compliant browsers
+
+
+        search.addEventListener("click", async(e) => {
+            e.target.style.display = "none";
+            document.getElementById("search-input").style.display = "none";
+            //     const searchcont = title.value;
+
+            //     console.log(searchcont);
+            //     window.location = `/movies/search?search=${searchcont}`;
+        });
+    </script>
+</body>
+
+</html>
