@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie page</title>
+
+    <!-- link to css -->    
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/media_query.css">
+    <link rel="stylesheet" href="stylesheets/reset.css">
+    <link rel="stylesheet" href="stylesheets/variable.css">
+
+    <!-- fav Icon -->
+    <link rel="shortcut icon" href="images/fav-icon.png" type="image/x-icon">
+
+    <!-- box Icon -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+      <div class="navbar1">
+
+        <!--
+  - menu button for small screen
+-->
+        <button class="navbar1-menu-btn">
+  <span class="one"></span>
+  <span class="two"></span>
+  <span class="three"></span>
+</button>
+        <!--the button to show the menu , three dashes
+-->
+
+        <a href="#" class="navbar1-brand">
+            <img src="images/logo.png" alt="">
+        </a>
+
+        <!--
+  - navbar navigation
+-->
+
+        <nav class="">
+            <ul class="navbar1-nav">
+
+                <li> <a href="http://localhost:3000/" class="navbar1-link">Home</a> </li>
+                <li> <a href="http://localhost:3000/movies/general" class="navbar1-link">Movies</a> </li>
+                <li> <a href="#live" class="navbar1-link  ">TV Show</a> </li>
+                <li> <a href="movies.html" class="navbar1-link">My List</a> </li>
+            </ul>
+        </nav>
+
+        <!--
+  - search and sign-in
+-->
+
+        <div class="navbar1-actions">
+
+            <form action="#" class="navbar1-form">
+                <input id="search-input" type="text" name="search" placeholder="I'm looking for..." class="navbar1-form-search">
+
+                <button class="navbar1-form-btn">
+      <ion-icon name="search-outline"></ion-icon>
+    </button>
+
+                <button class="navbar1-form-close">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </button>
+            </form>
+
+
+            <!--
+    - search button for small screen
+  -->
+
+            <button class="navbar1-search-btn">
+    <ion-icon name="search-outline"></ion-icon>
+  </button>
+
+            <a href="#" class="navbar1-signin">
+                <figure>
+                    <img src="images/popcorn.png" style="width: 50px;height:50px">
+                    <figcaption style="font-size: 10px; padding-left:3px; ">My Profile</figcaption>
+                </figure>
+
+            </a>
+
+        </div>
+
+    </div>
+    </header>
+
+    
+    <div class="play-container container">
+
+      <div class="slideshow-container">
+
+        <!-- Full-width slides/quotes -->
+        <div class="mySlides">
+
+        <h2>1.  How are you today ?</h2>
+        <div>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">
+                Happy
+                <i class='bx bx-smile'></i>
+              </div>
+            </label>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">
+                Sad
+                <i class='bx bx-sad'></i>
+              </div>
+            </label>
+          </div>
+        </div>
+      
+        <div class="mySlides">
+          <h2>2.  What comes closest to your occasion?</h2>
+          <div>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">Just watching a movie by myself.</div>
+            </label>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">Movie Date.</div>
+            </label>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">Movie Night with friends.</div>
+            </label>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">Date Night with boyfriend or girlfriend.</div>
+            </label>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">Watching a movie with family or relatives.</div>
+            </label>
+            </div>
+        </div>
+      
+        <div class="mySlides">
+          <h2>3. Please choose any genre you're interested in.</h2>
+          <div>
+            <div class="container">
+              <ul class="ks-cboxtags">
+                <li><input type="checkbox" id="checkboxOne" value="Rainbow Dash"><label for="checkboxOne">Action</label></li>
+                <li><input type="checkbox" id="checkboxTwo" value="Cotton Candy" checked><label for="checkboxTwo">Comedy</label></li>
+                <li><input type="checkbox" id="checkboxThree" value="Rarity" checked><label for="checkboxThree">Rarity</label></li>
+                <li><input type="checkbox" id="checkboxFour" value="Moondancer"><label for="checkboxFour">Moondancer</label></li>
+                <li><input type="checkbox" id="checkboxFive" value="Surprise"><label for="checkboxFive">Surprise</label></li>
+                <li><input type="checkbox" id="checkboxSix" value="Twilight Sparkle" checked><label for="checkboxSix">Twilight
+                                Sparkle</label></li>
+                <li><input type="checkbox" id="checkboxSeven" value="Fluttershy"><label for="checkboxSeven">Fluttershy</label></li>
+                <li><input type="checkbox" id="checkboxEight" value="Derpy Hooves"><label for="checkboxEight">Derpy Hooves</label></li>
+                <li><input type="checkbox" id="checkboxNine" value="Princess Celestia"><label for="checkboxNine">Princess
+                                Celestia</label></li>
+                <li><input type="checkbox" id="checkboxTen" value="Gusty"><label for="checkboxTen">Gusty</label></li>
+                <li class="ks-selected"><input type="checkbox" id="checkboxEleven" value="Discord"><label for="checkboxEleven">Discord</label></li>
+                <li><input type="checkbox" id="checkboxTwelve" value="Clover"><label for="checkboxTwelve">Clover</label></li>
+                <li><input type="checkbox" id="checkboxThirteen" value="Baby Moondancer"><label for="checkboxThirteen">Baby
+                                Moondancer</label></li>
+                <li><input type="checkbox" id="checkboxFourteen" value="Medley"><label for="checkboxFourteen">Medley</label></li>
+                <li><input type="checkbox" id="checkboxFifteen" value="Firefly"><label for="checkboxFifteen">Firefly</label></li>
+              </ul>
+            
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="mySlides">
+          <h2>4. Who are your favourite actors?</h2>
+          <div>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">Matthew Broderick</div>
+            </label>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">Jeffrey Jones</div>
+            </label>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">Elle Fanning</div>
+            </label>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">Chris Pratt</div>
+            </label>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">Scarlett Johansson</div>
+            </label>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">other</div>
+            </label>
+            </div>
+        </div>
+
+        <div class="mySlides">
+          <h2>5. Is the age-appropriateness rating of the movie important to you?</h2>
+          <div>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">Yes, I would like to choose the ratings that I'm okay with.</div>
+            </label>
+            <label class="rad-label">
+              <input type="radio" class="rad-input" name="rad">
+              <div class="rad-design"></div>
+              <div class="rad-text">No, it doesn't matter.</div>
+            </label>
+            </div>
+            <button type="button" 
+            style="background-color: white;
+            color: black;
+            border: 4px solid hsl(225, 97%, 62%);
+            padding: 14px 40px;">
+            <b>Submit</b>
+          </button>
+        </div>
+        <!-- Next/prev buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        
+      </div>        
+
+          
+
+
+    </div>
+
+
+    <!-- link to js-->
+    <script src="javascripts/main.js"></script>
+    <script src="javascripts/main1.js"></script>
+</body>
+</html>

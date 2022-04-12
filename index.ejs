@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie page</title>
+
+    <!-- link to css -->
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/media_query.css">
+    <link rel="stylesheet" href="stylesheets/reset.css">
+    <link rel="stylesheet" href="stylesheets/variable.css">
+    <!-- fav Icon -->
+    <link rel="shortcut icon" href="images/fav-icon.png" type="image/x-icon">
+
+    <!-- box Icon -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <div class="navbar1">
+
+            <!--
+      - menu button for small screen
+    -->
+            <button class="navbar1-menu-btn">
+      <span class="one"></span>
+      <span class="two"></span>
+      <span class="three"></span>
+    </button>
+            <!--the button to show the menu , three dashes
+-->
+
+            <a href="#" class="navbar1-brand">
+                <img src="images/logo.png" alt="">
+            </a>
+
+            <!--
+      - navbar navigation
+    -->
+
+            <nav class="">
+                <ul class="navbar1-nav">
+
+                    <li> <a href="http://localhost:3000/" class="navbar1-link">Home</a> </li>
+                    <li> <a href="http://localhost:3000/movies/general" class="navbar1-link">Movies</a> </li>
+                    <li> <a href="#live" class="navbar1-link  ">TV Show</a> </li>
+                    <li> <a href="movies.html" class="navbar1-link">My List</a> </li>
+                </ul>
+            </nav>
+
+            <!--
+      - search and sign-in
+    -->
+
+            <div class="navbar1-actions">
+
+                <form action="#" class="navbar1-form">
+                    <input id="search-input" type="text" name="search" placeholder="I'm looking for..." class="navbar1-form-search">
+
+                    <button class="navbar1-form-btn">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+
+                    <button class="navbar1-form-close">
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </button>
+                </form>
+
+
+                <!--
+        - search button for small screen
+      -->
+
+                <button class="navbar1-search-btn">
+        <ion-icon name="search-outline"></ion-icon>
+      </button>
+
+                <a href="#" class="navbar1-signin">
+                    <figure>
+                        <img src="images/popcorn.png" style="width: 50px;height:50px">
+                        <figcaption style="font-size: 10px; padding-left:3px; ">My Profile</figcaption>
+                    </figure>
+
+                </a>
+
+            </div>
+
+        </div>
+    </header>
+
+    <% result.forEach(function(e){%>
+    <div class="play-container container">
+        
+        <!-- movie image -->
+        <img src=<%="https://m.media-amazon.com/images/M/MV5BNzkxODk0NjEtYjc4Mi00ZDI0LTgyYjEtYzc1NDkxY2YzYTgyXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX182_CR0,0,182,268_AL__QL50.jpg" %> alt="" class="play-img">
+
+        <!-- movie title -->
+        <div class="play-text">
+            <h2><%=e.title %></h2>
+
+            <!-- movie rating -->
+            <div class="rating">
+                <ion-icon name="star-outline"></ion-icon>
+                <span><%=e.rating %></span>
+            </div>
+            <!-- <div class="rating">
+                <div class="rate">
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
+
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text">3 stars</label>
+
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text">4 stars</label>
+
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text">5 stars</label>
+                </div>
+            </div> -->
+
+            <!-- tags -->
+            <div class="tags">
+                <span><%=e.genre %></span>
+                <span><i class='bx bx-movie'></i><%= e.title  %></span>
+                
+            </div>
+            <div class="tags">
+              <span><i class='bx bxs-time'></i> <%= e.duration  %></span>
+              <span><i class='bx bx-smile' ></i><%=e.released_year %></span>
+              <span><i class='bx bx-world'></i><%=e.country %></span>
+            </div>
+
+            <!-- Trailer Button
+            <div class="gap">
+                <div>
+                <a href='#' class="watch-btn">
+                    <i class='bx bx-right-arrow' ></i>
+                    <span>Watch the trailer</span>
+                </a>
+                </div>
+                <div>
+                <a href='#' class="watch-btn">
+                    <i class='bx bxs-heart'></i>
+                </a>
+                </div>
+            </div> -->
+            
+        </div>
+
+        <!--video container-->
+    </div>
+
+    <!-- About -->
+    <div class="about-movie container">
+        <h2><%= e.title  %></h2>
+        <p><%= e.description  %></p>
+        
+
+      <div class="info">
+        <!-- Movie cast-->
+        <div>
+        <h2 class="cast-heading">Cast</h2>
+        <p><%= e.actors  %></p>
+        <!-- <p>Jannis Niewöhner</p>
+        <p>Vanessa Hudgens</p>
+        <p>Kimiko Glenn</p>        
+        <p>Vanessa Hudgens</p>
+        <p>Kimiko Glenn</p> -->
+        
+        </div>
+
+        <!-- Movie cast-->
+        <div>
+        <h2 class="cast-heading">Director</h2>
+        <p><%= e.directors  %></p>
+        </div>
+
+      </div>
+
+      
+      <% }) %>
+    </div>
+    
+    
+
+
+
+    <!-- link to js-->
+    <script src="javascripts/main.js"></script>
+    <script src="javascripts/main1.js"></script>
+</body>
+</html>
