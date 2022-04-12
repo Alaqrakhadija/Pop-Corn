@@ -95,7 +95,7 @@
     <div class="play-container container">
         
         <!-- movie image -->
-        <img src=<%="https://m.media-amazon.com/images/M/MV5BNzkxODk0NjEtYjc4Mi00ZDI0LTgyYjEtYzc1NDkxY2YzYTgyXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX182_CR0,0,182,268_AL__QL50.jpg" %> alt="" class="play-img">
+        <img src=<%=e.Poster_Link %> alt="" class="play-img">
 
         <!-- movie title -->
         <div class="play-text">
@@ -127,30 +127,13 @@
 
             <!-- tags -->
             <div class="tags">
-                <span><%=e.genre %></span>
+                <span><%=e.type %></span>
                 <span><i class='bx bx-movie'></i><%= e.title  %></span>
-                
-            </div>
-            <div class="tags">
-              <span><i class='bx bxs-time'></i> <%= e.duration  %></span>
-              <span><i class='bx bx-smile' ></i><%=e.released_year %></span>
-              <span><i class='bx bx-world'></i><%=e.country %></span>
+                <span><i class='bx bxs-time'></i> <%= e.duration  %>  </span>
+                <span><i class='bx bx-smile' ></i><%=e.released_year %></span>
+                <span><i class='bx bx-world'></i><%=e.country %></span>
             </div>
 
-            <!-- Trailer Button
-            <div class="gap">
-                <div>
-                <a href='#' class="watch-btn">
-                    <i class='bx bx-right-arrow' ></i>
-                    <span>Watch the trailer</span>
-                </a>
-                </div>
-                <div>
-                <a href='#' class="watch-btn">
-                    <i class='bx bxs-heart'></i>
-                </a>
-                </div>
-            </div> -->
             
         </div>
 
@@ -167,7 +150,7 @@
         <!-- Movie cast-->
         <div>
         <h2 class="cast-heading">Cast</h2>
-        <p><%= e.actors  %></p>
+        <p><%= e.cast  %></p>
         <!-- <p>Jannis Niewöhner</p>
         <p>Vanessa Hudgens</p>
         <p>Kimiko Glenn</p>        
@@ -179,7 +162,7 @@
         <!-- Movie cast-->
         <div>
         <h2 class="cast-heading">Director</h2>
-        <p><%= e.directors  %></p>
+        <p><%= e.director  %></p>
         </div>
 
       </div>
