@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>profile with data and skills - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+</head>
+<body>
+    
+    <%   data.forEach(function(e){%>
+<div class="container" style="margin-left: 200px; margin-top: -40px;">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3" >
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <%if(e.gender == "male"){%>
+
+                                <img src="./images/boy3.jpg" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4 style="color: dodgerblue"> <%=e.Name %></h4>
+                            </div>
+                                <%}else{%>
+                                    <img src="./images/girl.jpg" alt="Admin" class="rounded-circle" width="150">
+                                    <div class="mt-3">
+                                        <h4 style="color: dodgerblue"> <%=e.Name %></h4>
+                                    </div>
+                                <%}%>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8" >
+                <div class="card mb-3" style="width:500px;">
+                    <div class="card-body" style="margin-left: 20px;">
+                        <form action="/edit" method="post">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0" style="font-size: 20px;font-family: 'Bell MT';margin-top: 20px;">Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" style="margin-top: 25px;">
+                                <input name="Name" type="text" class="texx" required="required" maxlength="30" value=<%=e.Name %>>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0"style="font-size: 20px;font-family: 'Bell MT'">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <input name="Email" type="text" class="texx" required="" readonly value=<%=e.email %>>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0"style="font-size: 20px;font-family: 'Bell MT'">Gender</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <div class="buttons" style="margin-top: -8px; margin-bottom: 10px;;">
+                                  <input label="Male" id="Male" value="male" type="radio" name="setD_gender" value="male" checked>
+                                  <input label="Female" id="Female" value="female" type="radio" name="setD_gender" value="female">
+                                </div>
+
+
+ <%if(e.gender == "male"){%>
+
+<script >
+const yesBtn = document.getElementById('Male');
+yesBtn.checked = true;
+</script>
+<%}else{%>
+    <script>
+const yesBtn = document.getElementById('Female');
+yesBtn.checked = true;
+    </script>
+<%}%>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0"style="font-size: 20px;font-family: 'Bell MT'">Password</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                    <input name="Pass" type="password" class="texx" required="required" maxlength="30" value=<%=e.passward %>>
+                               </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                
+                                <button class="btn btn-primary" style="width: 170px;margin-left: 95px">Edit</button>
+                            </div>
+                        </div>
+                        <%   if(typeof message != "undefined" && message) { %>
+
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                  <p style="color: red;"><%=  message  %></p>
+                  
+                              
+                            </div>
+                       <% }    %>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</div>
+ <% }) %>
+</div>
+
+
+<style type="text/css">
+    .texx {
+        width: 200px;
+        display: block;
+        border: none;
+        border-bottom: solid 1px #e2e8f0;
+        transition: all 0.3s cubic-bezier(.64,.09,.08,1);
+        background: linear-gradient(to bottom, rgba(255,255,255,0) 96%,midnightblue 4%);
+        background-position: -200px 0;
+        background-size: 200px 100%;
+        background-repeat: no-repeat;
+        color:  dodgerblue;
+       margin-top: -15px;
+    }
+    body{
+        margin-top:10%;
+        color: #e2e8f0;
+        text-align: left;
+        background-image: url(./images/wa.jpg );
+        background-color: #cccccc;
+        font-family: "Bell MT";
+        font-size: 20px;
+
+        background-size: cover;
+        overflow-x: hidden;
+    }
+    fieldset {
+        width: 400px;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    }
+    .legend {
+        font-weight: bold;
+    }
+    label {
+        margin-right: 10px;
+    }
+    .main-body {
+        padding: 15px;
+    }
+    .card {
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: black;
+        opacity: 0.8;
+        background-clip: border-box;
+        border: 0 solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+    }
+
+    .card-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1rem;
+    }
+
+    .gutters-sm {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+
+    .gutters-sm>.col, .gutters-sm>[class*=col-] {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+    .mb-3, .my-3 {
+        margin-bottom: 1rem!important;
+    }
+
+    .bg-gray-300 {
+        background-color: #e2e8f0;
+    }
+    .h-100 {
+        height: 100%!important;
+    }
+    .shadow-none {
+        box-shadow: none!important;
+    }
+
+    .buttons {
+      background: #dfdfdf;
+      padding: 4px;
+      border-radius: 3px;
+      position: relative;
+      width: fit-content;
+    }
+
+    .buttons input {
+      appearance: none;
+      cursor: pointer;
+      border-radius: 2px;
+      padding: 5px 10px;
+      background: #3f414d;
+      color: #ececec;
+      font-size: 15px;
+      font-family: sans-serif;
+      transition: all 0.1s;
+     
+    }
+
+
+    .buttons input:checked {
+      background: rgb(83, 83, 202);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 1px 0px #808080;
+    }
+
+    .buttons input::before {
+      content: attr(label);
+      text-align: center;
+    }
+
+</style>
+
+
+
+</body>
+</html>
