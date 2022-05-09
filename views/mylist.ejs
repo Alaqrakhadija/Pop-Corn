@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/icon.png" type="image/png">
+    <title>MyList</title>
+    <!--
+       - custom css link
+     -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/media_query.css">
+
+
+    <!--
+      - google font link
+    -->
+    <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="container1" id="blur">
+        <!--
+      - #HEADER SECTION
+    -->
+
+        <header class="">
+            <div class="navbar1">
+
+                <!--
+      - menu button for small screen
+    -->
+                <button class="navbar1-menu-btn">
+      <span class="one"></span>
+      <span class="two"></span>
+      <span class="three"></span>
+    </button>
+                <!--the button to show the menu , three dashes
+-->
+
+                <a href="/Home" class="navbar1-brand">
+                    <img src="/images/logo.jpg" alt="" width="20px" height="20px">
+                </a>
+
+                <!--
+      - navbar navigation
+    -->
+
+                <nav class="">
+                    <ul class="navbar1-nav">
+
+                        <li> <a href="/Home" class="navbar1-link">Home</a> </li>
+                        <li> <a href="/movies" class="navbar1-link">Movies</a> </li>
+                        <!-- <li> <a href="/series" class="navbar1-link  ">TV Show</a> </li> -->
+                        <li> <a href="/mylist" class="navbar1-link">My List</a> </li>
+                    </ul>
+                </nav>
+
+                <!--
+      - search and sign-in
+    -->
+
+                <div class="navbar1-actions">
+
+                    <form action="#" class="navbar1-form">
+                        <input id="search-input" type="text" name="search" placeholder="I'm looking for..." class="navbar1-form-search">
+
+                        <button class="navbar1-form-btn" id="button">
+          <ion-icon name="search-outline"></ion-icon>
+        </button>
+
+                        <button class="navbar1-form-close">
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </button>
+                    </form>
+
+
+                    <!--
+        - search button for small screen
+      -->
+
+                    <button class="navbar1-search-btn">
+        <ion-icon name="search-outline"></ion-icon>
+      </button>
+                    <a href="/Profile " class="navbar1-signin">
+
+
+                        <img src="/images/profile.png">
+
+
+                    </a>
+                    <a href="/Popcorn" class="navbar1-logout">
+                        <ion-icon name="log-out-outline" size="large"></ion-icon>
+
+
+                    </a>
+
+                </div>
+
+            </div>
+        </header>
+
+
+
+        <!--
+        - #MOVIES SECTION
+      -->
+        <section class="movies">
+
+
+
+
+
+            <!--
+      - movies grid
+    -->
+
+            <div class="movies-grid" id="reload">
+
+
+
+
+                <%  var i=0;
+                         while(i!=result.length){ %>
+
+                    <div class="movie-card" id="<%=result[i].title  %>">
+                        <div class="card-head">
+                            <img class="card-img" src="<%=result[i].img_url %>" lt="">
+                            <div class="card-overlay">
+                                <button class="bookmark" onclick="removelist(this)" id="bookmark" value="<%=result[i].title  %>">
+                                   
+                
+                    <ion-icon name="bookmark"></ion-icon>
+         
+                                </button>
+                                <div class="rating">
+                                    <ion-icon name="star-outline"></ion-icon>
+                                    <span><%=result[i].users_rating %></span>
+                                </div>
+                                <div class="play">
+                                    <ion-icon name="play-circle-outline"></ion-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <%= result[i].title  %>
+                            </h3>
+                            <div class="card-info">
+                                <span class="genre"><%=result[i].genre %></span>
+                                <span class="year"><%=result[i].year %></span>
+                            </div>
+                        </div>
+                    </div>
+                    <% i++; } %>
+
+
+
+            </div>
+
+            <!--
+      - load more button
+    -->
+            <!-- <button class="load-more" id="load">LOAD MORE</button>
+
+        </section> -->
+
+            <!--
+    - FOOTER SECTION
+  -->
+            <footer>
+
+                <div class="footer-content">
+
+
+
+
+
+                </div>
+
+
+                <div class="footer-copyright">
+
+                    <div class="social-link ">
+
+                        <a href="# ">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                        <a href="# ">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                        <a href="# ">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                        <a href="# ">
+                            <ion-icon name="logo-youtube"></ion-icon>
+                        </a>
+                        <a href="# ">
+                            <ion-icon name="mail"></ion-icon>
+                        </a>
+
+                    </div>
+                    <div class="chart">
+                        <a href="/charts">Popcorn Charts</p>
+                    </div>
+                    <div class="copyright">
+                        <p>&copy; copyright 2022 Popcorn</p>
+                    </div>
+
+
+
+                    <!--     <div class="wrapper">
+                   <a href="#">Privacy policy</a>
+                        <a href="#">Terms and conditions</a>
+                    </div>-->
+
+                </div>
+
+            </footer>
+    </div>
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="/js/mylist.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
